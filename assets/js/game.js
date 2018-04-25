@@ -143,7 +143,7 @@ document.onkeyup = function(event) {
         toggleDiv(1, "box-victory");
         changeDivContent("misterious-letter", randomLetter);
 
-        var audio = new Audio('../audio/ff7.mp3');
+        var audio = new Audio('ff7.mp3');
         audio.play();
 
         randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
