@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
+    <header id="header">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
@@ -40,29 +40,39 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-12 text-center">
+                <div class="col-4 text-center">
                     <div class="box-you">
                         <h2>Guesses</h2>
                         <p id="guess-number">0</p>
                     </div>
                 </div>
-                <div class="col-12 text-center">
+                <div class="col-4 text-center">
                     <div class="box-you">
                         <h2>Guesses Left</h2>
                         <p id="guess-left">9</p>
                     </div>
                 </div>
-                &nbsp;
-                <div class="col-12 text-center">
+                <div class="col-4 text-center">
                     <div class="box-computer">
                         <h2>Guesses so far</h2>
                         <p id="guess-so-far">---</p>
                     </div>
                 </div>
+                &nbsp;
             </div>
         </div>
-        <div class="container">
-            <div class="row"></div>
+        <div class="container invisible" id="box-victory">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box-victory text-center">
+                        <h2>You won!!</h2>
+                        <p id="text-letter-guessed">The guessed letter was <span id="misterious-letter"></span></p>
+                        <img src="http://24.media.tumblr.com/d515e122fced9b56264694e530589d78/tumblr_mugn4hjqVO1qlycobo1_500.gif" alt="You won!" class="img-fluid">
+                        <br><br>
+                        <button class="btn btn-primary" onclick="location.reload();">Start a New game</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer>

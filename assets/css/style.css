@@ -20,11 +20,11 @@ body {
 }
 
 footer {
-    position: fixed;
     bottom: 0px;
     width: 100%;
     background-color: bisque;
-    padding: 10px 0px;
+	padding: 10px 0px;
+	margin-top: 35px;
 }
 
 #box-win {
@@ -33,4 +33,15 @@ footer {
 
 #box-computer {
 	background-color: #e55252;
+}
+
+.box-victory {
+	border: 1px solid grey;
+	background-color: lightgreen;
+	padding: 10px 0px;
+}
+
+#misterious-letter {
+	font-weight: bold;
+	font-size: 25px;
 }

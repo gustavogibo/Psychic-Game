@@ -9,6 +9,37 @@ Variables needed for the game:
 - Letter to be guessed = randomLetter
 
 */
+
+/*
+    Function to make a div appear or disappear
+    Arguments:
+        statement = 1 - Div Appears
+                    2 - Div Disappears
+        divName = The div ID that you want to appear/disappear
+*/
+function toggleDiv(statement, divName) {
+
+    var element = document.getElementById(divName);
+
+    if(statement != 0) {
+
+        element.classList.remove("invisible");
+
+    } else {
+
+        element.classList.add("invisible");
+
+    }
+    
+}
+
+function changeDivContent(divName, content) {
+
+    var element = document.getElementById(divName);
+
+    element.textContent = content;
+
+}
 /*
     Using three native functions to generate my random letter
     fromCharCode = Returns a string created from the specified sequence of UTF-16 code units.
@@ -31,6 +62,8 @@ var divGuess = document.getElementById("guess-number");
 var divGuessLeft = document.getElementById("guess-left");
 var divGuessSoFar = document.getElementById("guess-so-far");
 
+
+
 document.onkeyup = function(event) {
 
     var userGuess = event.key;
@@ -50,10 +83,15 @@ document.onkeyup = function(event) {
             guessesLeft = 9;
             guessList = [];
 
-            divLoss.textContent = losses;
-            divGuess.textContent = guesses;
-            divGuessLeft.textContent = guessesLeft;
-            divGuessSoFar.textContent = "---";
+            changeDivContent("user-losses", losses);
+            changeDivContent("guess-number", guesses);
+            changeDivContent("guess-left", guessesLeft);
+            changeDivContent("guess-so-far", "---");
+
+            // divLoss.textContent = losses;
+            // divGuess.textContent = guesses;
+            // divGuessLeft.textContent = guessesLeft;
+            // divGuessSoFar.textContent = "---";
         
         // Otherwise, increase the guess number, decrease the remaining guesses and increase the Guesses done so far
         } else {
@@ -61,8 +99,11 @@ document.onkeyup = function(event) {
             guesses++;
             guessList.push(userGuess);
 
-            divGuess.textContent = guesses;
-            divGuessLeft.textContent = guessesLeft;
+            changeDivContent("guess-number", guesses);
+            changeDivContent("guess-left", guessesLeft);
+
+            // divGuess.textContent = guesses;
+            // divGuessLeft.textContent = guessesLeft;
 
             printGuessList = "";
             for (let i = 0; i < guessList.length; i++) {
@@ -76,7 +117,8 @@ document.onkeyup = function(event) {
                     printGuessList+=" "+guessList[i]+",";
                 }
             }
-            divGuessSoFar.textContent = printGuessList;
+            changeDivContent("guess-so-far", printGuessList);
+            // divGuessSoFar.textContent = printGuessList;
         }
 
         
@@ -88,14 +130,23 @@ document.onkeyup = function(event) {
         guessesLeft = 9;
         guessList = [];
 
-        divWin.textContent = wins;
-        divGuess.textContent = guesses;
-        divGuessLeft.textContent = guessesLeft;
-        divGuessSoFar.textContent = "---";
+        changeDivContent("user-wins", wins);
+        changeDivContent("guess-number", guesses);
+        changeDivContent("guess-left", guessesLeft);
+        changeDivContent("guess-so-far", "---");
+
+        // divWin.textContent = wins;
+        // divGuess.textContent = guesses;
+        // divGuessLeft.textContent = guessesLeft;
+        // divGuessSoFar.textContent = "---";
+
+        toggleDiv(1, "box-victory");
+        changeDivContent("misterious-letter", randomLetter);
+
+        var audio = new Audio('../audio/ff7.mp3');
+        audio.play();
 
         randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
-        console.log("You win! The letter was " +randomLetter);
 
     }
 
