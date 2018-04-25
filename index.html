@@ -13,10 +13,12 @@
 </head>
 <body>
     <header>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col text-center">
-                    <h1>Psychic Game - Good Luck!</h1>
+                <div class="col-12 text-center">
+                    <div class="header">
+                        <h1>Psychic Game - Good Luck!</h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -24,9 +26,47 @@
     <main>
         <div class="container">
             <div class="row">
-
+                <div class="col-6 text-center">
+                    <div id="box-win" class="box-you">
+                        <h2>Wins</h2>
+                        <p id="user-wins">0</p>
+                    </div>
+                </div>
+                <div class="col-6 text-center">
+                    <div id="box-computer" class="box-computer">
+                        <h2>Losses</h2>
+                        <p id="user-losses">0</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="box-you">
+                        <h2>Guesses Left</h2>
+                        <p id="guess-left">9</p>
+                    </div>
+                </div>
+                &nbsp;
+                <div class="col-12 text-center">
+                    <div class="box-computer">
+                        <h2>Guesses so far</h2>
+                        <p id="guess-so-far">---</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="author text-center">
+                        <h3>Copyright &copy; 2018 - Made by Gustavo Gibo</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

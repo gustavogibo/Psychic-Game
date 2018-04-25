@@ -1,0 +1,28 @@
+body {
+	background: #f7f7f7;
+}
+
+.box-you, .box-computer {
+	background-color: #ccc;
+	border: 1px solid black;
+	padding: 10px 0px;
+}
+
+.header {
+	background-color: #ccc;
+	border: 1px solid black;
+	margin-bottom: 25px;
+}
+
+.winner {
+	background-color: #14cc48;
+	font-weight: bold;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: bisque;
+    padding: 10px 0px;
+}

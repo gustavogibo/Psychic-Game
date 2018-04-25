@@ -5,7 +5,7 @@ Variables needed for the game:
 - Wins
 - Losses
 - Guesses
-- Actual Guesses
+- Guesses left
 - Letter to be guessed = randomLetter
 
 */
@@ -25,7 +25,13 @@ randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 var wins = 0;
 var losses = 0;
 var guesses = 0;
-var actualGuesses = 0;
+var guessesLeft = 9;
+var guessList = [];
+
+var divWin = document.getElementById("user-choice");
+var divLoss = document.getElementById("user-losses");
+var divGuessLeft = document.getElementById("guess-left");
+var divGuessSoFar = document.getElementById("guess-so-far");
 
 // console.log(randomLetter);
 
