@@ -26,3 +26,11 @@ footer {
     background-color: bisque;
     padding: 10px 0px;
 }
+
+#box-win {
+	background: lightblue;
+}
+
+#box-computer {
+	background-color: #e55252;
+}

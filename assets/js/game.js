@@ -23,8 +23,9 @@ var losses = 0;
 var guesses = 0;
 var guessesLeft = 9;
 var guessList = [];
+var printGuessList = "";
 
-var divWin = document.getElementById("user-choice");
+var divWin = document.getElementById("user-wins");
 var divLoss = document.getElementById("user-losses");
 var divGuess = document.getElementById("guess-number");
 var divGuessLeft = document.getElementById("guess-left");
@@ -35,10 +36,12 @@ document.onkeyup = function(event) {
     var userGuess = event.key;
         userGuess = userGuess.toLowerCase();
 
+    // If the user guesses wrong
     if(userGuess != randomLetter) {
 
         guessesLeft--;
         
+        // If user has no more guesses left
         if (guessesLeft == 0) {
 
             randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
@@ -51,11 +54,49 @@ document.onkeyup = function(event) {
             divGuess.textContent = guesses;
             divGuessLeft.textContent = guessesLeft;
             divGuessSoFar.textContent = "---";
-            
+        
+        // Otherwise, increase the guess number, decrease the remaining guesses and increase the Guesses done so far
         } else {
-            
+
+            guesses++;
+            guessList.push(userGuess);
+
+            divGuess.textContent = guesses;
+            divGuessLeft.textContent = guessesLeft;
+
+            printGuessList = "";
+            for (let i = 0; i < guessList.length; i++) {
+
+                if (i == guessList.length-1) {
+                
+                    printGuessList+=" "+guessList[i];
+                
+                } else {
+                    
+                    printGuessList+=" "+guessList[i]+",";
+                }
+            }
+            divGuessSoFar.textContent = printGuessList;
         }
-        guessList.push(userGuess);
+
+        
+
+    } else {
+
+        wins++;
+        guesses = 0;
+        guessesLeft = 9;
+        guessList = [];
+
+        divWin.textContent = wins;
+        divGuess.textContent = guesses;
+        divGuessLeft.textContent = guessesLeft;
+        divGuessSoFar.textContent = "---";
+
+        randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+
+        console.log("You win! The letter was " +randomLetter);
+
     }
 
 };
