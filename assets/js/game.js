@@ -68,7 +68,7 @@ var instructions = "Instructions"+
                     "\n"+
                     "2 - Type the letter that you think the computer chose."+
                     "\n"+
-                    "3 - If you guess the wrong letter, you'll miss a guess. You have onbly 9 guesses."+
+                    "3 - If you guess the wrong letter, you'll miss a guess. You have only 9 guesses."+
                     "\n"+
                     "4 - If you miss all your guesses, game over! You can start a new game though. Just press Ok as the new alert appears."+
                     "If you win, something good awaits for you. Good Luck!"+
