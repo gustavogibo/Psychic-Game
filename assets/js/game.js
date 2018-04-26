@@ -62,91 +62,111 @@ var divGuess = document.getElementById("guess-number");
 var divGuessLeft = document.getElementById("guess-left");
 var divGuessSoFar = document.getElementById("guess-so-far");
 
+var instructions = "Instructions"+
+                    "\n"+
+                    "1 - The computer will choose randomly a letter"+
+                    "\n"+
+                    "2 - Type the letter that you think the computer chose."+
+                    "\n"+
+                    "3 - If you guess the wrong letter, you'll miss a guess. You have onbly 9 guesses."+
+                    "\n"+
+                    "4 - If you miss all your guesses, game over! You can start a new game though. Just press Ok as the new alert appears."+
+                    "If you win, something good awaits for you. Good Luck!"+
+                    "\n"+
+                    "Hint: Use headphones!";
 
+
+alert(instructions);
 
 document.onkeyup = function(event) {
 
     var userGuess = event.key;
         userGuess = userGuess.toLowerCase();
 
-    // If the user guesses wrong
-    if(userGuess != randomLetter) {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
 
-        guessesLeft--;
-        
-        // If user has no more guesses left
-        if (guessesLeft == 0) {
+        // If the user guesses wrong
+        if(userGuess != randomLetter) {
 
-            randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-            losses++;
+            guessesLeft--;
+            
+            // If user has no more guesses left
+            if (guessesLeft == 0) {
+
+                randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+                losses++;
+                guesses = 0;
+                guessesLeft = 9;
+                guessList = [];
+
+                changeDivContent("user-losses", losses);
+                changeDivContent("guess-number", guesses);
+                changeDivContent("guess-left", guessesLeft);
+                changeDivContent("guess-so-far", "---");
+
+                alert("You lost! Try again =)");
+
+                // divLoss.textContent = losses;
+                // divGuess.textContent = guesses;
+                // divGuessLeft.textContent = guessesLeft;
+                // divGuessSoFar.textContent = "---";
+            
+            // Otherwise, increase the guess number, decrease the remaining guesses and increase the Guesses done so far
+            } else {
+
+                guesses++;
+                guessList.push(userGuess);
+
+                changeDivContent("guess-number", guesses);
+                changeDivContent("guess-left", guessesLeft);
+
+                // divGuess.textContent = guesses;
+                // divGuessLeft.textContent = guessesLeft;
+
+                printGuessList = "";
+                for (let i = 0; i < guessList.length; i++) {
+
+                    if (i == guessList.length-1) {
+                    
+                        printGuessList+=" "+guessList[i];
+                    
+                    } else {
+                        
+                        printGuessList+=" "+guessList[i]+",";
+                    }
+                }
+                changeDivContent("guess-so-far", printGuessList);
+                // divGuessSoFar.textContent = printGuessList;
+            }
+
+            
+
+        } else {
+
+            wins++;
             guesses = 0;
             guessesLeft = 9;
             guessList = [];
 
-            changeDivContent("user-losses", losses);
+            changeDivContent("user-wins", wins);
             changeDivContent("guess-number", guesses);
             changeDivContent("guess-left", guessesLeft);
             changeDivContent("guess-so-far", "---");
 
-            // divLoss.textContent = losses;
+            // divWin.textContent = wins;
             // divGuess.textContent = guesses;
             // divGuessLeft.textContent = guessesLeft;
             // divGuessSoFar.textContent = "---";
-        
-        // Otherwise, increase the guess number, decrease the remaining guesses and increase the Guesses done so far
-        } else {
 
-            guesses++;
-            guessList.push(userGuess);
+            toggleDiv(1, "box-victory");
+            changeDivContent("misterious-letter", randomLetter);
 
-            changeDivContent("guess-number", guesses);
-            changeDivContent("guess-left", guessesLeft);
+            var audio = new Audio('ff7.mp3');
+            audio.play();
 
-            // divGuess.textContent = guesses;
-            // divGuessLeft.textContent = guessesLeft;
+            randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 
-            printGuessList = "";
-            for (let i = 0; i < guessList.length; i++) {
-
-                if (i == guessList.length-1) {
-                
-                    printGuessList+=" "+guessList[i];
-                
-                } else {
-                    
-                    printGuessList+=" "+guessList[i]+",";
-                }
-            }
-            changeDivContent("guess-so-far", printGuessList);
-            // divGuessSoFar.textContent = printGuessList;
         }
-
-        
-
-    } else {
-
-        wins++;
-        guesses = 0;
-        guessesLeft = 9;
-        guessList = [];
-
-        changeDivContent("user-wins", wins);
-        changeDivContent("guess-number", guesses);
-        changeDivContent("guess-left", guessesLeft);
-        changeDivContent("guess-so-far", "---");
-
-        // divWin.textContent = wins;
-        // divGuess.textContent = guesses;
-        // divGuessLeft.textContent = guessesLeft;
-        // divGuessSoFar.textContent = "---";
-
-        toggleDiv(1, "box-victory");
-        changeDivContent("misterious-letter", randomLetter);
-
-        var audio = new Audio('ff7.mp3');
-        audio.play();
-
-        randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 
     }
 
