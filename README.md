@@ -17,6 +17,12 @@ Third Homework Assignment - Psychic Game
 * Instructions will be given with an initial alert window.
 * Follow the rules and good luck!
 
+### Link to the game
+
+You can access the game by clicking on the link below:
+
+* [Psychic Game](https://gustavogibo.github.io/Psychic-Game/)
+
 ### Rules
 
 * The computer will choose randomly a letter.
