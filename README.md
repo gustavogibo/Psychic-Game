@@ -19,7 +19,7 @@ Third Homework Assignment - Psychic Game
 
 ### Link to the game
 
-You can access the game by clicking on the link below:
+You can access the game without downloading any file by just clicking on the link below:
 
 * [Psychic Game](https://gustavogibo.github.io/Psychic-Game/)
 
