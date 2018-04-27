@@ -1,5 +1,5 @@
 
-# Basic Portfolio
+# Psychic Game
 
 Third Homework Assignment - Psychic Game
 
