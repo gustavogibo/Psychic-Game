@@ -21,7 +21,7 @@ Third Homework Assignment - Psychic Game
 
 You can access the game without downloading any file by just clicking on the link below:
 
-* [Psychic Game](https://gustavogibo.github.io/Psychic-Game/){:target="_blank"}
+* [Psychic Game](https://gustavogibo.github.io/Psychic-Game/)
 
 ### Rules
 
