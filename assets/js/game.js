@@ -56,12 +56,6 @@ var guessesLeft = 9;
 var guessList = [];
 var printGuessList = "";
 
-var divWin = document.getElementById("user-wins");
-var divLoss = document.getElementById("user-losses");
-var divGuess = document.getElementById("guess-number");
-var divGuessLeft = document.getElementById("guess-left");
-var divGuessSoFar = document.getElementById("guess-so-far");
-
 var instructions = "Instructions"+
                     "\n"+
                     "1 - The computer will choose randomly a letter"+
@@ -75,7 +69,6 @@ var instructions = "Instructions"+
                     "\n"+
                     "Hint: Use headphones!";
 
-
 alert(instructions);
 
 document.onkeyup = function(event) {
@@ -87,8 +80,12 @@ document.onkeyup = function(event) {
 
         // If the user guesses wrong
         if(userGuess != randomLetter) {
+            
+            if(guessList.indexOf(userGuess) == -1) {
 
-            guessesLeft--;
+                guessesLeft--;
+
+            }
             
             // If user has no more guesses left
             if (guessesLeft == 0) {
@@ -105,38 +102,32 @@ document.onkeyup = function(event) {
                 changeDivContent("guess-so-far", "---");
 
                 alert("You lost! Try again =)");
-
-                // divLoss.textContent = losses;
-                // divGuess.textContent = guesses;
-                // divGuessLeft.textContent = guessesLeft;
-                // divGuessSoFar.textContent = "---";
             
             // Otherwise, increase the guess number, decrease the remaining guesses and increase the Guesses done so far
             } else {
+                
+                if(guessList.indexOf(userGuess) == -1) {
 
-                guesses++;
-                guessList.push(userGuess);
+                    guesses++;
+                    guessList.push(userGuess);
 
-                changeDivContent("guess-number", guesses);
-                changeDivContent("guess-left", guessesLeft);
+                    changeDivContent("guess-number", guesses);
+                    changeDivContent("guess-left", guessesLeft);
 
-                // divGuess.textContent = guesses;
-                // divGuessLeft.textContent = guessesLeft;
+                    printGuessList = "";
+                    for (let i = 0; i < guessList.length; i++) {
 
-                printGuessList = "";
-                for (let i = 0; i < guessList.length; i++) {
-
-                    if (i == guessList.length-1) {
-                    
-                        printGuessList+=" "+guessList[i];
-                    
-                    } else {
+                        if (i == guessList.length-1) {
                         
-                        printGuessList+=" "+guessList[i]+",";
+                            printGuessList+=" "+guessList[i];
+                        
+                        } else {
+                            
+                            printGuessList+=" "+guessList[i]+",";
+                        }
                     }
                 }
                 changeDivContent("guess-so-far", printGuessList);
-                // divGuessSoFar.textContent = printGuessList;
             }
 
             
@@ -153,11 +144,6 @@ document.onkeyup = function(event) {
             changeDivContent("guess-left", guessesLeft);
             changeDivContent("guess-so-far", "---");
 
-            // divWin.textContent = wins;
-            // divGuess.textContent = guesses;
-            // divGuessLeft.textContent = guessesLeft;
-            // divGuessSoFar.textContent = "---";
-
             toggleDiv(1, "box-victory");
             changeDivContent("misterious-letter", randomLetter);
 
@@ -171,6 +157,4 @@ document.onkeyup = function(event) {
     }
 
 };
-
-// console.log(randomLetter);
 
