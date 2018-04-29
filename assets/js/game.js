@@ -40,6 +40,24 @@ function changeDivContent(divName, content) {
     element.textContent = content;
 
 }
+
+function restartGame() {
+
+    randomLetter = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+    losses++;
+    guesses = 0;
+    guessesLeft = 9;
+    guessList = [];
+
+    changeDivContent("user-losses", losses);
+    changeDivContent("guess-number", guesses);
+    changeDivContent("guess-left", guessesLeft);
+    changeDivContent("guess-so-far", "---");
+    toggleDiv(0, "box-victory");
+;
+    audio.pause();
+    audio.currentTime = 0;
+}
 /*
     Using three native functions to generate my random letter
     fromCharCode = Returns a string created from the specified sequence of UTF-16 code units.
